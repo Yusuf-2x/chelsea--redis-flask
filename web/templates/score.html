@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="grid gap-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+  <section
+    class="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.7)]"
+  >
+    <div
+      class="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-chelseaBlue/20 blur-3xl"
+    ></div>
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
+      Last Score
+    </p>
+    <p class="mt-4 text-sm text-slate-400">Most recently saved full-time score</p>
+    <p class="mt-6 text-5xl font-semibold text-chelseaGold">
+      {{ current_score }}
+    </p>
+    <p class="mt-2 text-[11px] text-slate-400">
+      Update this via the form on the right or from the home hub.
+    </p>
+
+    <div class="mt-6 flex flex-wrap items-center gap-3 text-xs">
+      <a
+        href="/"
+        class="rounded-full border border-slate-700 bg-slate-900 px-4 py-1.5 text-slate-200 transition hover:border-chelseaBlue hover:text-chelseaBlue"
+        >Back to hub</a
+      >
+    </div>
+  </section>
+
+  <section
+    class="rounded-2xl border border-slate-800 bg-slate-950/70 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.7)]"
+  >
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
+      Update Score
+    </p>
+    <p class="mt-3 text-xs text-slate-400">
+      Use the format <span class="font-mono text-slate-200">2-0</span>,
+      <span class="font-mono text-slate-200">1-1</span>, etc.
+    </p>
+
+    <form
+      method="get"
+      action="/score"
+      class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center"
+    >
+      <label class="flex-1 text-xs text-slate-400">
+        New score
+        <input
+          type="text"
+          name="value"
+          placeholder="2-0"
+          class="mt-1 w-full rounded-xl border border-slate-700 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 outline-none ring-0 transition focus:border-chelseaGold focus:ring-1 focus:ring-chelseaGold/60"
+        />
+      </label>
+      <button
+        type="submit"
+        class="mt-1 inline-flex items-center justify-center rounded-xl bg-chelseaGold px-4 py-2 text-sm font-semibold text-slate-900 shadow-[0_12px_30px_rgba(219,161,17,0.5)] transition hover:-translate-y-0.5 hover:bg-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chelseaGold/70"
+      >
+        Save score
+      </button>
+    </form>
+
+    <p class="mt-4 text-[11px] text-slate-500">
+      Behind the scenes, this is stored in Redis using the key
+      <span class="font-mono text-slate-300">chelsea_hub_last_score</span>.
+    </p>
+  </section>
+</div>
+{% endblock %}
+

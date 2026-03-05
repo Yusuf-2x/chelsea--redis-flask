@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chelsea Matchday Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              chelseaBlue: "#034694",
+              chelseaGold: "#DBA111",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100">
+    <div
+      class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"
+    >
+      <header
+        class="border-b border-slate-800 bg-slate-950/70 backdrop-blur sticky top-0 z-10"
+      >
+        <div class="mx-auto max-w-4xl px-4 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div
+              class="h-9 w-9 rounded-full bg-gradient-to-br from-chelseaBlue to-chelseaGold flex items-center justify-center text-xl"
+            >
+              🔵
+            </div>
+            <div>
+              <h1 class="text-lg font-semibold tracking-tight">
+                Chelsea Matchday Hub
+              </h1>
+              <p class="text-xs text-slate-400">
+                Quick glance dashboard for score &amp; turnstile
+              </p>
+            </div>
+          </div>
+          <span
+            class="inline-flex items-center gap-1 rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1 text-[11px] font-medium text-slate-300"
+          >
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Live
+          </span>
+        </div>
+      </header>
+
+      <main class="mx-auto max-w-4xl px-4 py-8">
+        {% block content %}{% endblock %}
+      </main>
+
+      <footer class="mx-auto max-w-4xl px-4 pb-6 text-xs text-slate-500">
+        Built with Flask, Redis &amp; Tailwind CSS
+      </footer>
+    </div>
+  </body>
+</html>
+

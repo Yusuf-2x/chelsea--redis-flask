@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="grid gap-6 md:grid-cols-2">
+  <section
+    class="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.7)]"
+  >
+    <div
+      class="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-chelseaBlue/20 blur-3xl"
+    ></div>
+    <div class="flex items-center justify-between gap-4">
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
+          Turnstile Count
+        </h2>
+        <p class="mt-3 text-4xl font-semibold text-slate-50">
+          Live at the Bridge
+        </p>
+        <p class="mt-2 text-xs text-slate-400">
+          Hit the card below to see the latest count.
+        </p>
+      </div>
+      <a
+        href="/count"
+        class="group inline-flex h-24 w-24 flex-col items-center justify-center rounded-2xl border border-slate-700 bg-slate-900 text-center text-xs font-medium text-slate-200 transition hover:-translate-y-1 hover:border-chelseaBlue hover:bg-slate-900/80 hover:text-chelseaBlue"
+      >
+        <span
+          class="mb-1 inline-flex h-7 w-7 items-center justify-center rounded-full bg-chelseaBlue/10 text-chelseaBlue"
+        >
+          ⛩
+        </span>
+        View Count
+        <span class="mt-1 text-[10px] text-slate-400 group-hover:text-chelseaBlue/70"
+          >Refresh on every visit</span
+        >
+      </a>
+    </div>
+  </section>
+
+  <section
+    class="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.7)]"
+  >
+    <div
+      class="pointer-events-none absolute -left-10 -bottom-14 h-32 w-32 rounded-full bg-chelseaGold/10 blur-3xl"
+    ></div>
+    <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
+      Last Score
+    </h2>
+    <p class="mt-4 text-xs font-medium text-slate-400">Most recent final score</p>
+    <p class="mt-2 text-4xl font-semibold text-chelseaGold">
+      {{ last_score }}
+    </p>
+
+    <form
+      method="get"
+      action="/score"
+      class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center"
+    >
+      <label class="flex-1 text-xs text-slate-400">
+        Update score (e.g. <span class="font-mono text-slate-300">2-0</span>)
+        <input
+          type="text"
+          name="value"
+          placeholder="2-0"
+          class="mt-1 w-full rounded-xl border border-slate-700 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 outline-none ring-0 transition focus:border-chelseaGold focus:ring-1 focus:ring-chelseaGold/60"
+        />
+      </label>
+      <button
+        type="submit"
+        class="mt-1 inline-flex items-center justify-center rounded-xl bg-chelseaGold px-4 py-2 text-sm font-semibold text-slate-900 shadow-[0_12px_30px_rgba(219,161,17,0.5)] transition hover:-translate-y-0.5 hover:bg-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chelseaGold/70"
+      >
+        Save score
+      </button>
+    </form>
+  </section>
+</div>
+
+<div class="mt-8 text-xs text-slate-500">
+  <p class="font-mono">
+    Routes: <span class="text-slate-300">/count</span> for visit counter,
+    <span class="text-slate-300">/score?value=2-0</span> to set last score,
+    <span class="text-slate-300">/score</span> to view raw score.
+  </p>
+</div>
+{% endblock %}
+

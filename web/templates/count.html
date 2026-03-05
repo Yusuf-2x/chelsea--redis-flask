@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div
+  class="mx-auto max-w-md overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 p-6 text-center shadow-[0_18px_45px_rgba(15,23,42,0.7)]"
+>
+  <p class="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
+    Turnstile Count
+  </p>
+  <p class="mt-4 text-sm text-slate-400">Live entry count at the gates</p>
+  <p class="mt-6 text-5xl font-semibold text-chelseaBlue">
+    {{ count }}
+  </p>
+  <p class="mt-2 text-xs text-emerald-400">
+    ✅ Refresh this page to increase the count
+  </p>
+
+  <div class="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs">
+    <a
+      href="/"
+      class="rounded-full border border-slate-700 bg-slate-900 px-4 py-1.5 text-slate-200 transition hover:border-chelseaBlue hover:text-chelseaBlue"
+      >Back to hub</a
+    >
+    <a
+      href="/count"
+      class="inline-flex items-center gap-1 rounded-full bg-chelseaBlue px-4 py-1.5 text-slate-50 shadow-[0_10px_25px_rgba(3,70,148,0.6)] transition hover:-translate-y-0.5 hover:bg-blue-500"
+    >
+      <span>↻</span>
+      Refresh count
+    </a>
+  </div>
+</div>
+{% endblock %}
+

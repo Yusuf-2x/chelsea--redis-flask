@@ -4,10 +4,22 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DB=chelsea
+      - MYSQL_USER=chelsea
+      - MYSQL_PASSWORD=chelsea_password
     depends_on:
-      - redis
+      - mysql
 
-  redis:
-    build: ./redis        
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=chelsea
+      - MYSQL_USER=chelsea
+      - MYSQL_PASSWORD=chelsea_password
+    ports:
+      - "3306:3306"
+    command: ["--default-authentication-plugin=mysql_native_password"]
